@@ -1,12 +1,12 @@
 function checksum(table) {
   return table.split("\n").reduce((num, row) => {
     const nums = row.match(/\d+/g).map(match => parseInt(match))
-    const minMax = nums.reduce( (arr, num) => {
+    const [min, max] = nums.reduce( (arr, num) => {
       if (num < arr[0]) arr[0] = num
       if (num > arr[1]) arr[1] = num
       return arr
     }, [Infinity, -Infinity])
-    return num + (minMax[1] - minMax[0])
+    return num + max - min
   }, 0)
 }
 
