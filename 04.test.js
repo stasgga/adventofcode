@@ -1,12 +1,21 @@
-function validPassphrase(passphrase) {
-  const words = passphrase.split(' ')
+function validPassphrase(passphrase, checkAnagrams=false) {
+  let words = passphrase.split(' ')
+  if (checkAnagrams) words = words.map(str => str.split('').sort().join('') )
   return [...new Set(words)].toString() === words.toString()
 }
 
-test('example', () => {
+test('example1', () => {
   expect(validPassphrase('aa bb cc dd ee')).toBeTruthy();
   expect(validPassphrase('aa bb cc dd aa')).toBeFalsy();
   expect(validPassphrase('aa bb cc dd aaa')).toBeTruthy();
+})
+
+test('example2', () => {
+  expect(validPassphrase('abcde fghij', true)).toBeTruthy();
+  expect(validPassphrase('abcde xyz ecdab', true)).toBeFalsy();
+  expect(validPassphrase('a ab abc abd abf abj', true)).toBeTruthy();
+  expect(validPassphrase('iiii oiii ooii oooi oooo', true)).toBeTruthy();
+  expect(validPassphrase('oiii ioii iioi iiio', true)).toBeFalsy();
 })
 
 const input = `kvvfl kvvfl olud wjqsqa olud frc
@@ -524,5 +533,10 @@ rvbu czwpdit vmlihg spz lfaxxev zslfuto oog dvoksub`
 
 console.log(input.split("\n").reduce( (count, next) => {
   if (validPassphrase(next)) count++;
+  return count;
+}, 0))
+
+console.log(input.split("\n").reduce( (count, next) => {
+  if (validPassphrase(next, true)) count++;
   return count;
 }, 0))
