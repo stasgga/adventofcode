@@ -531,12 +531,12 @@ mhvisju lhmdbs tcxied xeidtc ujry cditex gvqpqm
 cgc jazrp crgnna uvuokl uvuokl uoiwl sknmc sknmc
 rvbu czwpdit vmlihg spz lfaxxev zslfuto oog dvoksub`
 
-console.log(input.split("\n").reduce( (count, next) => {
-  if (validPassphrase(next)) count++;
-  return count;
-}, 0))
+// console.log(input.split("\n").reduce( (count, next) => {
+//   if (validPassphrase(next)) count++;
+//   return count;
+// }, 0))
 
-console.log(input.split("\n").reduce( (count, next) => {
-  if (validPassphrase(next, true)) count++;
-  return count;
-}, 0))
+// console.log(input.split("\n").reduce( (count, next) => {
+//   if (validPassphrase(next, true)) count++;
+//   return count;
+// }, 0))
